@@ -64,6 +64,8 @@ public class MainActivity extends ActionBarActivity {
         public View onCreateView(LayoutInflater inflater, ViewGroup container,
                                  Bundle savedInstanceState) {
 
+            View rootView = inflater.inflate(R.layout.fragment_main, container, false);
+
             // 1.04_add_dummy_data : Create a dummy data
             List<String> weekForecast = new ArrayList<String>();
             weekForecast.add("Today - Sunny - 88 / 63");
@@ -80,11 +82,9 @@ public class MainActivity extends ActionBarActivity {
                     R.id.list_item_forecast_textview,
                     weekForecast);
 
-            View rootView = inflater.inflate(R.layout.fragment_main, container, false);
-
             // 1.06_attach_adapter
-            ListView list = (ListView) rootView.findViewById(R.id.listview_forecast);
-            list.setAdapter(mForecastAdapter);
+            ListView listView = (ListView) rootView.findViewById(R.id.listview_forecast);
+            listView.setAdapter(mForecastAdapter);
 
             return rootView;
         }
