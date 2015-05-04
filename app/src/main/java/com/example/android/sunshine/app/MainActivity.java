@@ -54,24 +54,32 @@ public class MainActivity extends ActionBarActivity {
      */
     public static class PlaceholderFragment extends Fragment {
 
+        ArrayAdapter<String> mForecastAdapter;
+
         public PlaceholderFragment() {
         }
 
         @Override
         public View onCreateView(LayoutInflater inflater, ViewGroup container,
                                  Bundle savedInstanceState) {
+            
+            // Create a dummy data
+            List<String> weekForecast = new ArrayList<String>();
+            weekForecast.add("Today - Sunny - 88 / 63");
+            weekForecast.add("Tomorrow - Foggy - 70 / 46");
+            weekForecast.add("Weds - Cloudy - 72 / 63");
+            weekForecast.add("Thurs - Rainy - 64 / 51");
+            weekForecast.add("Fri - Foggy - 70 / 46");
+            weekForecast.add("Sat - Sunny - 76 / 68");
+
+            // Create an ArrayAdapter
+            mForecastAdapter = new ArrayAdapter<String>(
+                    getActivity(),
+                    R.layout.list_item_forecast,
+                    R.id.list_item_forecast_textview,
+                    weekForecast);
+
             View rootView = inflater.inflate(R.layout.fragment_main, container, false);
-
-            List<String> weeklyForecast = new ArrayList<String>();
-            weeklyForecast.add("Today - Sunny - 88 / 63");
-            weeklyForecast.add("Tomorrow - Foggy - 70 / 46");
-            weeklyForecast.add("Weds - Cloudy - 72 / 63");
-            weeklyForecast.add("Thurs - Rainy - 64 / 51");
-            weeklyForecast.add("Fri - Foggy - 70 / 46");
-            weeklyForecast.add("Sat - Sunny - 76 / 68");
-
-            ArrayAdapter<String> adapter = new ArrayAdapter<String>(getActivity(), R.layout.list_item_forecast, R.id.list_item_forecast_textview, weeklyForecast);
-
             return rootView;
         }
     }
